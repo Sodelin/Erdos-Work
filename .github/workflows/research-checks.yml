@@ -1,0 +1,72 @@
+name: Research checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: research-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  evidence-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Test the checks and validate all idea records
+        run: |
+          python3 -m unittest discover -s tests -v
+          for idea in research/ideas/*.json; do
+            python3 scripts/check_idea.py "$idea"
+          done
+      - name: Verify the restricted mathematical certificate
+        run: |
+          python3 research/results/erdos128/verify_grotzsch_symmetric.py
+          python3 research/results/erdos128/verify_grotzsch_symmetric_independent.py
+      - name: Find changed idea records
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, subprocess
+          base = os.environ.get('BASE_SHA', '')
+          if os.environ['EVENT_NAME'] == 'workflow_dispatch' or not base or set(base) == {'0'}:
+              files = sorted(str(p) for p in pathlib.Path('research/ideas').glob('*.json'))
+          else:
+              files = subprocess.check_output(['git', 'diff', '--name-only', '--diff-filter=AM', base, 'HEAD', '--', 'research/ideas/*.json'], text=True).splitlines()
+          files = [p for p in files if pathlib.Path(p).is_file()]
+          if len(files) > 3:
+              raise SystemExit('At most three idea records per review; split this change before starting work.')
+          pathlib.Path('/tmp/review-ideas.json').write_text(json.dumps(files))
+          print(f'{len(files)} changed idea record(s) selected')
+          PY
+      - name: Check public DOI reference metadata
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, subprocess
+          pathlib.Path('prior-art-output').mkdir(exist_ok=True)
+          failed = False
+          for name in json.loads(pathlib.Path('/tmp/review-ideas.json').read_text()):
+              output = pathlib.Path('prior-art-output') / (pathlib.Path(name).stem + '.json')
+              result = subprocess.run(['python3', 'scripts/check_references.py', '--idea', name, '--output', str(output)])
+              failed |= result.returncode != 0
+          raise SystemExit(1 if failed else 0)
+          PY
+      - name: Retain metadata evidence, including dependency failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: prior-art-${{ github.sha }}
+          path: prior-art-output/*.json
+          if-no-files-found: ignore
+          retention-days: 14

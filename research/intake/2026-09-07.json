@@ -1,0 +1,35 @@
+{
+  "checked_date": "2026-09-07",
+  "purpose": "Deduplicate screened public opportunities before implementation. Recheck only for material changes.",
+  "candidates": [
+    {
+      "id": "expensify-app-99976",
+      "url": "https://github.com/Expensify/App/issues/99976",
+      "status": "skip_duplicate_work",
+      "finding": "Existing detailed proposals identify the debug-banner layout cause and provide implementation branches. Exact current fee and selection unverified."
+    },
+    {
+      "id": "expensify-app-99763",
+      "url": "https://github.com/Expensify/App/issues/99763",
+      "status": "skip_duplicate_work",
+      "finding": "Existing proposals identify duplicated safe-area padding and offer fixes; no fresh paid assignment verified."
+    },
+    {
+      "id": "pgstrap-2",
+      "url": "https://github.com/seveibar/pgstrap/issues/2",
+      "status": "blocked_funding_and_scope",
+      "finding": "Advertised $30 lead has existing submissions and unresolved current-funding/acceptance questions. No entitlement verified."
+    },
+    {
+      "id": "algora-turso-challenge",
+      "url": "https://algora.io/challenges/turso",
+      "status": "closed",
+      "finding": "Official challenge page says submissions are closed."
+    }
+  ],
+  "route_sources": [
+    "https://github.com/Expensify/App/blob/main/contributingGuides/CONTRIBUTING.md",
+    "https://github.com/Expensify/App/blob/main/contributingGuides/AI_ETIQUETTE.md"
+  ],
+  "limitations": "No qualifying new task, accepted assignment, submission or payout established. Public GitHub API rate limiting curtailed further comment checks."
+}

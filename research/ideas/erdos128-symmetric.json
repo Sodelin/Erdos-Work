@@ -1,0 +1,83 @@
+{
+  "id": "erdos128-symmetric",
+  "revision": 1,
+  "claim": "For every nonnegative a,b,c with 5a+5b+c=1, the weighted Grotzsch graph with weights (a,a,a,a,a,b,b,b,b,b,c) has a fractional half of edge mass at most 1/50.",
+  "status": "blocked",
+  "owner": "Sodelin project; assistant research team",
+  "proposed_at": "2026-09-07T15:55:00Z",
+  "lane": "income",
+  "search_queries": [
+    "sparse halves triangle-free graphs Grotzsch weighted blow-ups",
+    "Bispo Vega graphs Sparse Half Conjecture"
+  ],
+  "approach": "Exact endpoint witness certificates; no further attempt until overlap and applicable reward are resolved.",
+  "budget": {
+    "max_minutes": 30,
+    "max_new_spend_usd": 0
+  },
+  "reviews": {
+    "alphaxiv": {
+      "status": "complete",
+      "claim_sha256": "1d3fc4204e878f83ebd90eb2c880f3b20561164c8273969b8f5ed4a980e1b82d",
+      "checked_at": "2026-09-07T15:55:00Z",
+      "verdict": "unresolved",
+      "sources": [
+        "https://arxiv.org/html/2104.09406v2",
+        "https://arxiv.org/abs/1311.5818",
+        "https://www.teses.usp.br/teses/disponiveis/45/45134/tde-21082025-115625/publico/Dissertacao_CesarAugustoDosSantosBispo_.pdf",
+        "https://sbm.org.br/jointmeeting-mexico/book-of-abstracts/"
+      ],
+      "gap": "Razborov Theorem 3.6 covers independence mass >= 2/5. Bispo 2025 small-independence abstract has no numeric threshold; exact overlap with this claim is unresolved. Missing retrieved theorem is not novelty evidence.",
+      "queries": [
+        "Sparse Half Conjecture / Grotzsch graph / Vega graphs / Bispo",
+        "sparse halves / triangle-free graphs"
+      ],
+      "retrieval_limitations": "Two actual alphaXiv discovery searches completed. Author lookup misidentified Bispo as Cicero Nogueira dos Santos; that result was rejected.",
+      "revision": 1
+    },
+    "primary": {
+      "status": "complete",
+      "claim_sha256": "1d3fc4204e878f83ebd90eb2c880f3b20561164c8273969b8f5ed4a980e1b82d",
+      "checked_at": "2026-09-07T15:55:00Z",
+      "verdict": "unresolved",
+      "sources": [
+        "https://arxiv.org/html/2104.09406v2",
+        "https://arxiv.org/abs/1311.5818",
+        "https://www.teses.usp.br/teses/disponiveis/45/45134/tde-21082025-115625/publico/Dissertacao_CesarAugustoDosSantosBispo_.pdf",
+        "https://sbm.org.br/jointmeeting-mexico/book-of-abstracts/"
+      ],
+      "gap": "Razborov Theorem 3.6 covers independence mass >= 2/5. Bispo 2025 small-independence abstract has no numeric threshold; exact overlap with this claim is unresolved. Missing retrieved theorem is not novelty evidence.",
+      "queries": [
+        "\"Bispo\" \"Vega graphs\"",
+        "\"Sparse Half\" \"Grötzsch\"",
+        "\"A step toward the Sparse Half Conjecture\""
+      ],
+      "revision": 1
+    }
+  },
+  "reward": {
+    "status": "unverified",
+    "source_url": "https://www.combinatoricsfoundation.org/erd%C5%91s-problems",
+    "acceptance_criteria": "No verified reward for this restricted theorem. Historical $250 offer concerns full Erdos #128.",
+    "payment_trigger": "No applicable trigger established; no entitlement or payment claimed."
+  },
+  "correctness": {
+    "status": "exact_certificate_checked",
+    "commands": [
+      "python3 research/results/erdos128/verify_grotzsch_symmetric.py",
+      "python3 research/results/erdos128/verify_grotzsch_symmetric_independent.py"
+    ],
+    "coverage": "32 rational triangles; 9 witnesses; known large-independent-set theorem is an external dependency. Not Lean formalized."
+  },
+  "history": [
+    {
+      "at": "2026-09-07T15:55:00Z",
+      "event": "retrospective_registration",
+      "detail": "Exact rational certificate completed for the restricted class. This is not the full Erdos #128 statement. Novelty and a separately applicable reward remain unverified. This record was created after the earlier attempt; no claim that pre-registration occurred then."
+    }
+  ],
+  "prior_work_dois": [
+    "10.1016/j.jctb.2015.04.006",
+    "10.1070/SM9615"
+  ]
+}

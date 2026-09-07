@@ -1,0 +1,13 @@
+# Research agents
+
+Read this file and `docs/novelty-workflow.md` before substantial research work. The objective is useful, original work with an evidenced acceptance route. Passing a proof checker does not establish novelty or payment.
+
+1. Before starting an idea, register its exact claim, proposed method, owner, queries, reward evidence and bounded budget in `research/ideas/<id>.json`. Open a PR titled `[idea] <id>: <short claim>` so the independent review automation receives the proposal. Registration and literature checks may proceed while the idea is blocked; substantial proof/search work may not.
+2. Use alphaXiv plus an independent primary-source search for mathematical prior work. Inspect the actual theorem and assumptions. Search alternative names, stronger theorems, existing formalizations and recent follow-ups. A missing search result is not proof of novelty. Inaccessible evidence or uncertain overlap stays blocked.
+3. Run `python3 scripts/check_idea.py research/ideas/<id>.json --can-start`. Do not start if it fails. Reviews must cover the current claim, be at most seven days old, and explain the remaining gap. Recheck immediately if the claim, assumptions, proposed method or known literature materially changes; increment the revision and invalidate reviews.
+4. Record intent before work, then record the actual attempt, elapsed time, failures and evidence. Stop when the stated budget expires; record the outcome before considering another bounded attempt. Do not convert a timeout, finite search or restricted lemma into a full solution.
+5. The income lane also requires a verified, currently applicable payer/reward, acceptance criteria and payment trigger for this exact deliverable. A reward for a full conjecture does not pay for a special case. Keep proposed, checked, submitted, accepted and paid distinct; count paid only with a settlement receipt. Never put private identity, payment or account details in this public repository.
+6. Independently check correctness after a result, using exact computation, an appropriate proof checker or tests as applicable. Record actual trust assumptions. No formal-check claim unless the checker really ran. Prior-art metadata search is not a mathematical proof checker.
+7. Automated permission covers idea registration and review records in this repository. It does not itself authorize messages to third parties, prize submissions, account setup, contracts or spending. Follow the owner's current session instructions for such actions; do not infer permission from older workflow text.
+
+For non-research paid software tasks, inspect the live issue, existing proposals, branches, linked PRs and sponsor rules before implementation. alphaXiv is not a substitute for that duplicate-work check.
