@@ -1,0 +1,50 @@
+{
+  "id": "erdos128-full",
+  "revision": 1,
+  "claim": "Every finite triangle-free simple graph G on n vertices contains a set S of floor(n/2) vertices with 50*e(G[S]) <= n^2.",
+  "status": "proposed",
+  "owner": "Sodelin project; classical, modern and independent audit agents",
+  "proposed_at": "2026-09-07T16:12:00Z",
+  "lane": "research",
+  "purpose": "Settle the complete Erdos #128 conjecture. Reward verification is tracked separately and no eligibility or payment is claimed.",
+  "approach": "First audit historical and current methods, exact scope and formal statement. Replay the published Clebsch obstruction to the three-part edge-neighborhood method. Select a new proof attack only after the reviews identify a genuine remaining gap.",
+  "search_queries": [
+    "Erdos sparse half conjecture triangle-free graphs classical methods",
+    "More about sparse halves in triangle-free graphs"
+  ],
+  "prior_work_dois": [
+    "10.1016/j.jctb.2015.04.006",
+    "10.1070/SM9615"
+  ],
+  "budget": {
+    "max_minutes": 60,
+    "max_new_spend_usd": 0
+  },
+  "reviews": {
+    "alphaxiv": {
+      "status": "pending"
+    },
+    "primary": {
+      "status": "pending"
+    }
+  },
+  "reward": {
+    "status": "unverified",
+    "source_url": "https://www.combinatoricsfoundation.org/erd%C5%91s-problems",
+    "acceptance_criteria": "Foundation requires original published Erdos reward documentation and first community-accepted solution published in a reputable peer-reviewed mathematics journal. AI-assisted eligibility not explicitly established by sponsor rules.",
+    "payment_trigger": "Discretionary award after Foundation assessment; a correct Lean proof alone is not a payment trigger."
+  },
+  "correctness": {
+    "status": "open",
+    "formal_statement": "https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/128.lean",
+    "formal_statement_blob": "8fdaf7eaa6629dfd5aaad6521f7c84a6a9e96dca",
+    "formal_statement_note": "Existing Lean statement is category research open and contains sorry. Its cardinality guard is 2*|S|+1 >= n, matching floor(n/2). No full proof exists in our work."
+  },
+  "history": [
+    {
+      "at": "2026-09-07T16:12:00Z",
+      "event": "registered_before_attempt",
+      "detail": "Intent: extensive classical/modern review and exact reproduction of a published method barrier. Literature checks and reproductions are review work; no new full-proof attempt is cleared yet."
+    }
+  ]
+}
